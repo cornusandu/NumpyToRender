@@ -13,6 +13,8 @@ _DEFAULT = 0
 
 _VALUES = []
 _COLORS = []
+_SCREEN = None
+_CLOCK = None
 
 class Application:
     def __init__(self, title: str, target_fps: int, vsync: bool = False):
@@ -55,7 +57,7 @@ def render(array: np.ndarray, app: Application | None = None) -> None:
     if not pygame.get_init():
         pygame.init()
         pygame.display.set_caption(app.title)
-        _SCREEN = pygame.display.set_mode((array.shape[1], array.shape[0]))
+        _SCREEN = pygame.display.set_mode((array.shape[1], array.shape[0]), vsync=app.vsync)
 
     screen = _SCREEN
 
@@ -67,5 +69,5 @@ def render(array: np.ndarray, app: Application | None = None) -> None:
 
     pygame.display.flip()
 
-    if not app.vsync:
+    if _CLOCK is not None:
         _CLOCK.tick(app.target_fps)
