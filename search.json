@@ -1,0 +1,62 @@
+[
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "Internal library data. Data persists between render() cycles.\n\nsource\n\nApplication\n\n Application (title:str, target_fps:int, vsync:bool=False)\n\nInitialize self. See help(type(self)) for accurate signature.\nInternal library data. Data does not persist between render() cycles.\n\n_COLOR_OVERRIDES = {}  # (x, y): color\n\nUser-functions.\n\nsource\n\n\nrender\n\n render (array:numpy.ndarray, app:__main__.Application|None=None)\n\nRender + update + frame timing in a single call.\n\nsource\n\n\nadd_color_override\n\n add_color_override (x:int, y:int, color:pygame.color.Color)\n\nAdd a color override for a specific value.\n\nsource\n\n\nadd_value\n\n add_value (value:int, color:pygame.color.Color)\n\nAdd a value and its associated color to the global lists.\n\nsource\n\n\nget_default\n\n get_default (_DEFAULT)\n\nReturn the default value.\n\nsource\n\n\ncreate_array\n\n create_array (x:int, y:int)\n\nCreate a 2D numpy array with the given dimensions.",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "movement.html",
+    "href": "movement.html",
+    "title": "movement",
+    "section": "",
+    "text": "source\n\nmove_right\n\n move_right (array:numpy.ndarray, pos:tuple[int,int], default:int=0)\n\n\nsource\n\n\nmove_left\n\n move_left (array:numpy.ndarray, pos:tuple[int,int], default:int=0)\n\n\nsource\n\n\nmove_down\n\n move_down (array:numpy.ndarray, pos:tuple[int,int], default:int=0)\n\n\nsource\n\n\nmove_up\n\n move_up (array:numpy.ndarray, pos:tuple[int,int], default:int=0)\n\n\nsource\n\n\nmove_entity\n\n move_entity (array:numpy.ndarray, origpos:tuple[int,int],\n              newpos:tuple[int,int], default:int=0)",
+    "crumbs": [
+      "movement"
+    ]
+  },
+  {
+    "objectID": "logic.html",
+    "href": "logic.html",
+    "title": "logic",
+    "section": "",
+    "text": "source\n\nget_all_neighbors\n\n get_all_neighbors (array:numpy.ndarray, pos:tuple[int,int])\n\nGet the values of all 8 neighboring positions in the array.\n\nsource\n\n\nget_neighbors\n\n get_neighbors (array:numpy.ndarray, pos:tuple[int,int])\n\nGet the values of all 4 neighboring positions (up, down, left, right) in the array.\n\nsource\n\n\nget_right\n\n get_right (array:numpy.ndarray, pos:tuple[int,int])\n\nGet the value to the right of a given position in the array.\n\nsource\n\n\nget_left\n\n get_left (array:numpy.ndarray, pos:tuple[int,int])\n\nGet the value to the left of a given position in the array.\n\nsource\n\n\nget_down\n\n get_down (array:numpy.ndarray, pos:tuple[int,int])\n\nGet the value below a given position in the array.\n\nsource\n\n\nget_up\n\n get_up (array:numpy.ndarray, pos:tuple[int,int])\n\nGet the value above a given position in the array.",
+    "crumbs": [
+      "logic"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "NumpyToRender",
+    "section": "",
+    "text": "import sys, os\nsys.path.append(os.path.abspath(\"..\"))\n\n#| hide\nfrom np2render.core import *\n\npygame 2.6.1 (SDL 2.28.4, Python 3.12.11)\nHello from the pygame community. https://www.pygame.org/contribute.html\n\n\ne:\\Programming\\NumpyToRender\\.venv\\Lib\\site-packages\\pygame\\pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools&lt;81.\n  from pkg_resources import resource_stream, resource_exists",
+    "crumbs": [
+      "NumpyToRender"
+    ]
+  },
+  {
+    "objectID": "index.html#usage",
+    "href": "index.html#usage",
+    "title": "NumpyToRender",
+    "section": "Usage",
+    "text": "Usage\n\nInstallation\nInstall latest from the GitHub repository:\n$ pip install git+https://github.com/cornusandu/NumpyToRender.git\nor from pypi\n$ pip install NumpyToRender\n\n\nDocumentation\nDocumentation can be found hosted on this GitHub repository’s pages. Additionally you can find package manager specific guidelines on conda and pypi respectively.",
+    "crumbs": [
+      "NumpyToRender"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-use",
+    "href": "index.html#how-to-use",
+    "title": "NumpyToRender",
+    "section": "How to use",
+    "text": "How to use\nFirst, let’s import the library.\n\nfrom np2render.core import *\nfrom np2render.movement import *\nfrom np2render.logic import *\n\nimport pygame\n\nNow, let’s define our app settings and draw a basic 10x10 grid with white borders.\n\nif __name__ == \"__main__\":\n    app = Application(title=\"NumpyToRender Demo\", target_fps=30, vsync=False)\n    map = create_array(100, 100)\n    add_value(1, pygame.Color(255, 255, 255, 255))\n    for x in range(100):\n        for y in range(100):\n            if x == 0 or x == 99 or y == 0 or y == 99:\n                map[y][x] = 1\n\n    _exit = False\n    while True:\n        render(map, app)\n        for event in pygame.event.get():\n            if event.type == pygame.QUIT:\n                pygame.quit()\n                _exit = True\n        if _exit:\n            break\n\n\n---------------------------------------------------------------------------\nKeyboardInterrupt                         Traceback (most recent call last)\nCell In[3], line 10\n      7             map[y][x] = 1\n      9 while True:\n---&gt; 10     render(map, app)\n     11     for event in pygame.event.get():\n     12         if event.type == pygame.QUIT:\n\nFile e:\\Programming\\NumpyToRender\\np2render\\core.py:71, in render(array, app)\n     68 pygame.display.flip()\n     70 if not app.vsync:\n---&gt; 71     _CLOCK.tick(app.target_fps)\n\nKeyboardInterrupt:",
+    "crumbs": [
+      "NumpyToRender"
+    ]
+  }
+]
