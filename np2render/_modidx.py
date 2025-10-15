@@ -5,4 +5,9 @@ d = { 'settings': { 'branch': 'main',
                 'doc_host': 'https://cornusandu.github.io',
                 'git_url': 'https://github.com/cornusandu/NumpyToRender',
                 'lib_path': 'np2render'},
-  'syms': {'np2render.core': {'np2render.core.create_array': ('core.html#create_array', 'np2render/core.py')}}}
+  'syms': { 'np2render.core': { 'np2render.core.get_all_neighbors': ('logic.html#get_all_neighbors', 'np2render/core.py'),
+                                'np2render.core.get_down': ('logic.html#get_down', 'np2render/core.py'),
+                                'np2render.core.get_left': ('logic.html#get_left', 'np2render/core.py'),
+                                'np2render.core.get_neighbors': ('logic.html#get_neighbors', 'np2render/core.py'),
+                                'np2render.core.get_right': ('logic.html#get_right', 'np2render/core.py'),
+                                'np2render.core.get_up': ('logic.html#get_up', 'np2render/core.py')}}}
