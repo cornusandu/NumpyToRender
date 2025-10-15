@@ -78,20 +78,3 @@ if __name__ == "__main__":
         if _exit:
             break
 ```
-
-    KeyboardInterrupt: 
-    [31m---------------------------------------------------------------------------[39m
-    [31mKeyboardInterrupt[39m                         Traceback (most recent call last)
-    [36mCell[39m[36m [39m[32mIn[3][39m[32m, line 10[39m
-    [32m      7[39m             [38;5;28mmap[39m[y][x] = [32m1[39m
-    [32m      9[39m [38;5;28;01mwhile[39;00m [38;5;28;01mTrue[39;00m:
-    [32m---> [39m[32m10[39m     [43mrender[49m[43m([49m[38;5;28;43mmap[39;49m[43m,[49m[43m [49m[43mapp[49m[43m)[49m
-    [32m     11[39m     [38;5;28;01mfor[39;00m event [38;5;129;01min[39;00m pygame.event.get():
-    [32m     12[39m         [38;5;28;01mif[39;00m event.type == pygame.QUIT:
-
-    [36mFile [39m[32me:\Programming\NumpyToRender\np2render\core.py:71[39m, in [36mrender[39m[34m(array, app)[39m
-    [32m     68[39m pygame.display.flip()
-    [32m     70[39m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m app.vsync:
-    [32m---> [39m[32m71[39m     [43m_CLOCK[49m[43m.[49m[43mtick[49m[43m([49m[43mapp[49m[43m.[49m[43mtarget_fps[49m[43m)[49m
-
-    [31mKeyboardInterrupt[39m: 
