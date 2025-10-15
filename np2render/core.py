@@ -5,6 +5,11 @@
 # %% auto 0
 __all__ = ['create_array']
 
+# %% ../nbs/00_core.ipynb 3
+import numpy as np
+
+_DEFAULT = 0
+
 # %% ../nbs/00_core.ipynb 4
 def create_array(x: int, y: int) -> np.ndarray:
     """Create a 2D numpy array with the given dimensions."""
