@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "NumpyToRender"
+  site-url: "https://cornusandu.github.io/NumpyToRender"
+  description: "Automatically render a 2D game/window from a 2D numpy array"
+  repo-branch: main
+  repo-url: "https://github.com/cornusandu/NumpyToRender"
